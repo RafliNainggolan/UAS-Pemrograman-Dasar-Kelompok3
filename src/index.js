@@ -516,12 +516,12 @@ function main() {
                     console.log("\n========================================================");
                     console.log("    APLIKASI MANAJEMEN ONGKIR PAKET (CONSOLE TS)        ");
                     console.log("========================================================");
-                    console.log("1. 📦 Buat Pengiriman Baru (Hitung Ongkir)");
-                    console.log("2. 📋 Tampilkan Semua Pengiriman");
-                    console.log("3. 🔍 Cari Data Pengiriman (Resi / Penerima)");
-                    console.log("4. ✏️  Ubah Data Pengiriman");
-                    console.log("5. 🗑️  Hapus Data Pengiriman");
-                    console.log("6. 🚪 Keluar dari Aplikasi");
+                    console.log("1. Buat Pengiriman Baru (Hitung Ongkir)");
+                    console.log("2. Tampilkan Semua Pengiriman");
+                    console.log("3. Cari Data Pengiriman (Resi / Penerima)");
+                    console.log("4. Ubah Data Pengiriman");
+                    console.log("5. Hapus Data Pengiriman");
+                    console.log("6. Keluar dari Aplikasi");
                     console.log("--------------------------------------------------------");
                     return [4 /*yield*/, tanya("Pilih Menu (1-6): ")];
                 case 2:

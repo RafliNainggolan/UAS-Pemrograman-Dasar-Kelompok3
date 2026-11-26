@@ -298,7 +298,7 @@ async function menuTambahPengiriman(): Promise<void> {
   console.log(`----------------------------------------`);
   console.log(`TOTAL ONGKIR      : ${formatRupiah(dataBaru.totalOngkir)}`);
   console.log("========================================");
-  console.log("✅ Data pengiriman paket berhasil disimpan ke sistem!");
+  console.log(" Data pengiriman paket berhasil disimpan ke sistem!");
 }
 
 // --- READ: Tampilkan Seluruh Data Pengiriman ---
@@ -350,7 +350,7 @@ async function menuCariPengiriman(): Promise<void> {
   console.log("========================================");
 
   if (databasePengiriman.length === 0) {
-    console.log("⚠️ Database masih kosong. Tidak ada data untuk dicari.");
+    console.log(" Database masih kosong. Tidak ada data untuk dicari.");
     return;
   }
 
@@ -369,9 +369,9 @@ async function menuCariPengiriman(): Promise<void> {
   }
 
   if (hasilCari.length === 0) {
-    console.log(`❌ Data dengan kata kunci "${keyword}" tidak ditemukan.`);
+    console.log(` Data dengan kata kunci "${keyword}" tidak ditemukan.`);
   } else {
-    console.log(`\n🔍 Ditemukan ${hasilCari.length} data yang cocok:`);
+    console.log(`\n Ditemukan ${hasilCari.length} data yang cocok:`);
     for (const data of hasilCari) {
       console.log("----------------------------------------");
       console.log(`Resi          : ${data.idResi}`);
@@ -410,7 +410,7 @@ async function menuUbahPengiriman(): Promise<void> {
   }
 
   if (indexDitemukan === -1) {
-    console.log(`❌ Paket dengan nomor resi ${resiTarget} tidak ditemukan.`);
+    console.log(` Paket dengan nomor resi ${resiTarget} tidak ditemukan.`);
     return;
   }
 
@@ -451,7 +451,7 @@ async function menuUbahPengiriman(): Promise<void> {
   );
 
   if (!hasilBaru.valid) {
-    console.log(`\n❌ Gagal Update: ${hasilBaru.pesanError}`);
+    console.log(`\n Gagal Update: ${hasilBaru.pesanError}`);
     return;
   }
 
@@ -477,7 +477,7 @@ async function menuUbahPengiriman(): Promise<void> {
     totalOngkir: hasilBaru.totalOngkir,
   };
 
-  console.log(`\n✅ Data resi ${paketLama.idResi} berhasil diperbarui!`);
+  console.log(`\n Data resi ${paketLama.idResi} berhasil diperbarui!`);
   console.log(`Total Ongkir Baru: ${formatRupiah(hasilBaru.totalOngkir)}`);
 }
 
@@ -488,7 +488,7 @@ async function menuHapusPengiriman(): Promise<void> {
   console.log("========================================");
 
   if (databasePengiriman.length === 0) {
-    console.log("⚠️ Database masih kosong.");
+    console.log(" Database masih kosong.");
     return;
   }
 
@@ -503,7 +503,7 @@ async function menuHapusPengiriman(): Promise<void> {
   }
 
   if (indexHapus === -1) {
-    console.log(`❌ Data resi ${resiHapus} tidak ditemukan.`);
+    console.log(` Data resi ${resiHapus} tidak ditemukan.`);
     return;
   }
 
@@ -514,7 +514,7 @@ async function menuHapusPengiriman(): Promise<void> {
   if (konfirmasi.toLowerCase() === "y") {
     // [MATERI UAS]: Menghapus elemen dari array dengan splice()
     const terhapus = databasePengiriman.splice(indexHapus, 1);
-    console.log(`✅ Paket dengan nomor resi ${terhapus[0].idResi} berhasil dihapus.`);
+    console.log(` Paket dengan nomor resi ${terhapus[0].idResi} berhasil dihapus.`);
   } else {
     console.log("ℹ️ Penghapusan data dibatalkan.");
   }
@@ -531,12 +531,12 @@ async function main(): Promise<void> {
     console.log("\n========================================================");
     console.log("    APLIKASI MANAJEMEN ONGKIR PAKET (CONSOLE TS)        ");
     console.log("========================================================");
-    console.log("1. 📦 Buat Pengiriman Baru (Hitung Ongkir)");
-    console.log("2. 📋 Tampilkan Semua Pengiriman");
-    console.log("3. 🔍 Cari Data Pengiriman (Resi / Penerima)");
-    console.log("4. ✏️  Ubah Data Pengiriman");
-    console.log("5. 🗑️  Hapus Data Pengiriman");
-    console.log("6. 🚪 Keluar dari Aplikasi");
+    console.log("1. Buat Pengiriman Baru (Hitung Ongkir)");
+    console.log("2. Tampilkan Semua Pengiriman");
+    console.log("3. Cari Data Pengiriman (Resi / Penerima)");
+    console.log("4. Ubah Data Pengiriman");
+    console.log("5. Hapus Data Pengiriman");
+    console.log("6. Keluar dari Aplikasi");
     console.log("--------------------------------------------------------");
 
     const pilihan = await tanya("Pilih Menu (1-6): ");
