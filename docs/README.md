@@ -1,1 +1,1 @@
-# Folder Dokumentasi UAS
+# Folder khusus dokumentasi UAS
