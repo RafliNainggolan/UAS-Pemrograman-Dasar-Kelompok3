@@ -220,11 +220,11 @@ async function menuTambahPengiriman(): Promise<void> {
 
   const namaPengirim = await tanya("Nama Pengirim               : ");
   const namaPenerima = await tanya("Nama Penerima               : ");
-  const beratAktual = Number(await tanya("Berat aktual paket (kg)     : "));
-  const panjang = Number(await tanya("Panjang dimensi (cm)        : "));
-  const lebar = Number(await tanya("Lebar dimensi (cm)          : "));
-  const tinggi = Number(await tanya("Tinggi dimensi (cm)         : "));
-  const jarak = Number(await tanya("Jarak pengiriman (km)       : "));
+  const beratAktual = Number(await tanya("Berat aktual paket (kg, angka saja)     : "));
+  const panjang = Number(await tanya("Panjang dimensi (cm, angka saja)        : "));
+  const lebar = Number(await tanya("Lebar dimensi (cm, angka saja)          : "));
+  const tinggi = Number(await tanya("Tinggi dimensi (cm, angka saja)         : "));
+  const jarak = Number(await tanya("Jarak pengiriman (km, angka saja)       : "));
 
   console.log("\nPilihan Layanan:");
   console.log("1. Reguler (3-5 hari kerja)  - Rp5.000/kg");
@@ -250,7 +250,7 @@ async function menuTambahPengiriman(): Promise<void> {
   );
 
   if (!hasil.valid) {
-    console.log(`\n❌ Gagal Menyimpan: ${hasil.pesanError}`);
+    console.log(`\nGagal Menyimpan: ${hasil.pesanError}`);
     return;
   }
 
@@ -394,7 +394,7 @@ async function menuUbahPengiriman(): Promise<void> {
   console.log("========================================");
 
   if (databasePengiriman.length === 0) {
-    console.log("⚠️ Database masih kosong.");
+    console.log("Database masih kosong.");
     return;
   }
 
@@ -516,7 +516,7 @@ async function menuHapusPengiriman(): Promise<void> {
     const terhapus = databasePengiriman.splice(indexHapus, 1);
     console.log(` Paket dengan nomor resi ${terhapus[0].idResi} berhasil dihapus.`);
   } else {
-    console.log("ℹ️ Penghapusan data dibatalkan.");
+    console.log("Penghapusan data dibatalkan.");
   }
 }
 
@@ -564,14 +564,14 @@ async function main(): Promise<void> {
         rl.close();
         break;
       default:
-        console.log("❌ Pilihan tidak valid. Silakan pilih menu nomor 1 sampai 6.");
+        console.log("Pilihan tidak valid. Silakan pilih menu nomor 1 sampai 6.");
         break;
     }
   }
 }
 
 // Jalankan program utama
-main().catch((err) => {
-  console.error("Terjadi kesalahan sistem:", err);
+main().catch((eror) => {
+  console.error("Terjadi kesalahan sistem:", eror);
   rl.close();
 });

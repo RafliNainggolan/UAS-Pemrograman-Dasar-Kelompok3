@@ -211,23 +211,23 @@ function menuTambahPengiriman() {
                 case 2:
                     namaPenerima = _f.sent();
                     _a = Number;
-                    return [4 /*yield*/, tanya("Berat aktual paket (kg)     : ")];
+                    return [4 /*yield*/, tanya("Berat aktual paket (kg, angka saja)     : ")];
                 case 3:
                     beratAktual = _a.apply(void 0, [_f.sent()]);
                     _b = Number;
-                    return [4 /*yield*/, tanya("Panjang dimensi (cm)        : ")];
+                    return [4 /*yield*/, tanya("Panjang dimensi (cm, angka saja)        : ")];
                 case 4:
                     panjang = _b.apply(void 0, [_f.sent()]);
                     _c = Number;
-                    return [4 /*yield*/, tanya("Lebar dimensi (cm)          : ")];
+                    return [4 /*yield*/, tanya("Lebar dimensi (cm, angka saja)          : ")];
                 case 5:
                     lebar = _c.apply(void 0, [_f.sent()]);
                     _d = Number;
-                    return [4 /*yield*/, tanya("Tinggi dimensi (cm)         : ")];
+                    return [4 /*yield*/, tanya("Tinggi dimensi (cm, angka saja)         : ")];
                 case 6:
                     tinggi = _d.apply(void 0, [_f.sent()]);
                     _e = Number;
-                    return [4 /*yield*/, tanya("Jarak pengiriman (km)       : ")];
+                    return [4 /*yield*/, tanya("Jarak pengiriman (km, angka saja)       : ")];
                 case 7:
                     jarak = _e.apply(void 0, [_f.sent()]);
                     console.log("\nPilihan Layanan:");
@@ -246,7 +246,7 @@ function menuTambahPengiriman() {
                     zona = _f.sent();
                     hasil = hitungKalkulasiOngkir(beratAktual, panjang, lebar, tinggi, jarak, layanan, zona);
                     if (!hasil.valid) {
-                        console.log("\n\u274C Gagal Menyimpan: ".concat(hasil.pesanError));
+                        console.log("\nGagal Menyimpan: ".concat(hasil.pesanError));
                         return [2 /*return*/];
                     }
                     idResi = "EXP-".concat(Date.now().toString().slice(-6));
@@ -289,7 +289,7 @@ function menuTambahPengiriman() {
                     console.log("----------------------------------------");
                     console.log("TOTAL ONGKIR      : ".concat(formatRupiah(dataBaru.totalOngkir)));
                     console.log("========================================");
-                    console.log("✅ Data pengiriman paket berhasil disimpan ke sistem!");
+                    console.log(" Data pengiriman paket berhasil disimpan ke sistem!");
                     return [2 /*return*/];
             }
         });
@@ -337,7 +337,7 @@ function menuCariPengiriman() {
                     console.log("          PENCARIAN DATA PAKET          ");
                     console.log("========================================");
                     if (databasePengiriman.length === 0) {
-                        console.log("⚠️ Database masih kosong. Tidak ada data untuk dicari.");
+                        console.log(" Database masih kosong. Tidak ada data untuk dicari.");
                         return [2 /*return*/];
                     }
                     return [4 /*yield*/, tanya("Masukkan No. Resi atau Nama Penerima: ")];
@@ -353,10 +353,10 @@ function menuCariPengiriman() {
                         }
                     }
                     if (hasilCari.length === 0) {
-                        console.log("\u274C Data dengan kata kunci \"".concat(keyword, "\" tidak ditemukan."));
+                        console.log(" Data dengan kata kunci \"".concat(keyword, "\" tidak ditemukan."));
                     }
                     else {
-                        console.log("\n\uD83D\uDD0D Ditemukan ".concat(hasilCari.length, " data yang cocok:"));
+                        console.log("\n Ditemukan ".concat(hasilCari.length, " data yang cocok:"));
                         for (_a = 0, hasilCari_1 = hasilCari; _a < hasilCari_1.length; _a++) {
                             data = hasilCari_1[_a];
                             console.log("----------------------------------------");
@@ -387,7 +387,7 @@ function menuUbahPengiriman() {
                     console.log("       PERBARUI DATA PENGIRIMAN         ");
                     console.log("========================================");
                     if (databasePengiriman.length === 0) {
-                        console.log("⚠️ Database masih kosong.");
+                        console.log("Database masih kosong.");
                         return [2 /*return*/];
                     }
                     return [4 /*yield*/, tanya("Masukkan No. Resi yang ingin diubah: ")];
@@ -401,7 +401,7 @@ function menuUbahPengiriman() {
                         }
                     }
                     if (indexDitemukan === -1) {
-                        console.log("\u274C Paket dengan nomor resi ".concat(resiTarget, " tidak ditemukan."));
+                        console.log(" Paket dengan nomor resi ".concat(resiTarget, " tidak ditemukan."));
                         return [2 /*return*/];
                     }
                     paketLama = databasePengiriman[indexDitemukan];
@@ -445,12 +445,12 @@ function menuUbahPengiriman() {
                     zonaBaru = inputZona ? inputZona : paketLama.zona;
                     hasilBaru = hitungKalkulasiOngkir(beratAktualBaru, panjangBaru, lebarBaru, tinggiBaru, jarakBaru, layananBaru, zonaBaru);
                     if (!hasilBaru.valid) {
-                        console.log("\n\u274C Gagal Update: ".concat(hasilBaru.pesanError));
+                        console.log("\n Gagal Update: ".concat(hasilBaru.pesanError));
                         return [2 /*return*/];
                     }
                     // Update object di dalam array
                     databasePengiriman[indexDitemukan] = __assign(__assign({}, paketLama), { namaPengirim: inputPengirim || paketLama.namaPengirim, namaPenerima: inputPenerima || paketLama.namaPenerima, beratAktual: beratAktualBaru, panjang: panjangBaru, lebar: lebarBaru, tinggi: tinggiBaru, jarak: jarakBaru, layanan: layananBaru, zona: zonaBaru, namaLayanan: hasilBaru.namaLayanan, namaZona: hasilBaru.namaZona, beratVolumetrik: hasilBaru.beratVolumetrik, beratTagihan: hasilBaru.beratTagihan, tarifPerKg: hasilBaru.tarifPerKg, ongkirDasar: hasilBaru.ongkirDasar, biayaTambahan: hasilBaru.biayaTambahan, totalOngkir: hasilBaru.totalOngkir });
-                    console.log("\n\u2705 Data resi ".concat(paketLama.idResi, " berhasil diperbarui!"));
+                    console.log("\n Data resi ".concat(paketLama.idResi, " berhasil diperbarui!"));
                     console.log("Total Ongkir Baru: ".concat(formatRupiah(hasilBaru.totalOngkir)));
                     return [2 /*return*/];
             }
@@ -468,7 +468,7 @@ function menuHapusPengiriman() {
                     console.log("         HAPUS DATA PENGIRIMAN          ");
                     console.log("========================================");
                     if (databasePengiriman.length === 0) {
-                        console.log("⚠️ Database masih kosong.");
+                        console.log(" Database masih kosong.");
                         return [2 /*return*/];
                     }
                     return [4 /*yield*/, tanya("Masukkan No. Resi yang ingin dihapus: ")];
@@ -482,7 +482,7 @@ function menuHapusPengiriman() {
                         }
                     }
                     if (indexHapus === -1) {
-                        console.log("\u274C Data resi ".concat(resiHapus, " tidak ditemukan."));
+                        console.log(" Data resi ".concat(resiHapus, " tidak ditemukan."));
                         return [2 /*return*/];
                     }
                     return [4 /*yield*/, tanya("Apakah Anda yakin ingin menghapus data resi ".concat(databasePengiriman[indexHapus].idResi, "? (y/n): "))];
@@ -490,10 +490,10 @@ function menuHapusPengiriman() {
                     konfirmasi = _a.sent();
                     if (konfirmasi.toLowerCase() === "y") {
                         terhapus = databasePengiriman.splice(indexHapus, 1);
-                        console.log("\u2705 Paket dengan nomor resi ".concat(terhapus[0].idResi, " berhasil dihapus."));
+                        console.log(" Paket dengan nomor resi ".concat(terhapus[0].idResi, " berhasil dihapus."));
                     }
                     else {
-                        console.log("ℹ️ Penghapusan data dibatalkan.");
+                        console.log("Penghapusan data dibatalkan.");
                     }
                     return [2 /*return*/];
             }
@@ -561,7 +561,7 @@ function main() {
                     rl.close();
                     return [3 /*break*/, 14];
                 case 13:
-                    console.log("❌ Pilihan tidak valid. Silakan pilih menu nomor 1 sampai 6.");
+                    console.log("Pilihan tidak valid. Silakan pilih menu nomor 1 sampai 6.");
                     return [3 /*break*/, 14];
                 case 14: return [3 /*break*/, 1];
                 case 15: return [2 /*return*/];
@@ -570,7 +570,7 @@ function main() {
     });
 }
 // Jalankan program utama
-main().catch(function (err) {
-    console.error("Terjadi kesalahan sistem:", err);
+main().catch(function (eror) {
+    console.error("Terjadi kesalahan sistem:", eror);
     rl.close();
 });

@@ -9,8 +9,8 @@ Aplikasi ini merupakan program berbasis console yang digunakan untuk membantu me
 - Fachri Pratama Putra Susanto - 263140707111040 - @fchripratama12-cmyk 
 
 # Pembagian Tugas
-- Zakiyah: Setup repository, readme, struktur proyek, dan menu utama.
-- Rafli: Laporan 1.1 dan 1.2, serta perhitungan berat paket.
+- Zakiyah: readme, struktur proyek, dan menu utama.
+- Rafli: Setup repository, Laporan 1.1 dan 1.2, serta perhitungan berat paket.
 - Fachri: Laporan 3.2, serta perhitungan ongkos kirim.
 
 # Fitur Aplikasi
